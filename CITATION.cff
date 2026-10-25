@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Resilience Console"
+abstract: "Interactive model of a four-layer human-centric cybersecurity resilience architecture for Industry 5.0 cyber-physical systems. Companion to the paper 'A Unified Human-Centric Resilience Architecture for Cybersecurity in Industry 5.0 Cyber-Physical Systems'."
+type: software
+version: 1.0.0
+date-released: 2026-10-25
+license: MIT
+repository-code: "https://github.com/kav-cmd/resilience-console"
+url: "https://kav-cmd.github.io/resilience-console/"
+keywords:
+  - industry 5.0
+  - cyber-physical systems
+  - cybersecurity
+  - resilience
+  - human-in-the-loop
+  - digital twin
+  - explainable AI
+# TODO: add each author's family name (only first names are known from the page footer).
+authors:
+  - given-names: "Pallavi"
+  - given-names: "Patel"
+  - given-names: "Kavya"
+  - given-names: "Sridhar R"
+    affiliation: "RV College of Engineering"

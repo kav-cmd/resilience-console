@@ -1,0 +1,19 @@
+{
+  "name": "resilience-console",
+  "version": "1.0.0",
+  "description": "Interactive model of a four-layer human-centric cybersecurity resilience architecture for Industry 5.0 cyber-physical systems",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kav-cmd/resilience-console.git"
+  },
+  "scripts": {
+    "start": "npx --yes serve .",
+    "test": "node --test \"test/*.test.js\""
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
