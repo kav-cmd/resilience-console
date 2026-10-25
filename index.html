@@ -9,7 +9,13 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Resilience Console">
 <meta property="og:description" content="Run an attack through four defence layers and make the operator call. Companion to a paper on human-centric resilience for Industry 5.0 CPS.">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://kav-cmd.github.io/resilience-console/">
+<meta property="og:image" content="https://kav-cmd.github.io/resilience-console/docs/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Resilience Console simulator showing an attack moving through four defence layers">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kav-cmd.github.io/resilience-console/docs/og-image.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2316202a'/%3E%3Cpath d='M16 5l9 4v7c0 5-4 9-9 11-5-2-9-6-9-11V9z' fill='none' stroke='%23f2a33a' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='15' r='3' fill='%23f2a33a'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="css/style.css">
@@ -20,14 +26,14 @@
 <header>
   <div><h1>Resilience Console</h1><div class="sub">Interactive model of the four-layer human-centric defence for Industry 5.0 cyber-physical systems. Pick an event, run it through the layers and make the operator call.</div></div>
   <nav role="tablist" aria-label="Views">
-    <button role="tab" id="t-sim" aria-selected="true" data-v="sim">Simulator</button>
-    <button role="tab" id="t-cov" aria-selected="false" data-v="cov">Coverage</button>
-    <button role="tab" id="t-thr" aria-selected="false" data-v="thr">Threats</button>
-    <button role="tab" id="t-gap" aria-selected="false" data-v="gap">Gaps</button>
+    <button role="tab" id="t-sim" aria-controls="v-sim" aria-selected="true" tabindex="0" data-v="sim">Simulator</button>
+    <button role="tab" id="t-cov" aria-controls="v-cov" aria-selected="false" tabindex="-1" data-v="cov">Coverage</button>
+    <button role="tab" id="t-thr" aria-controls="v-thr" aria-selected="false" tabindex="-1" data-v="thr">Threats</button>
+    <button role="tab" id="t-gap" aria-controls="v-gap" aria-selected="false" tabindex="-1" data-v="gap">Gaps</button>
   </nav>
 </header>
 
-<section id="v-sim">
+<section id="v-sim" role="tabpanel" aria-labelledby="t-sim" tabindex="0">
 <div class="grid">
   <div class="stack">
     <div class="panel"><h2>Event</h2>
@@ -86,7 +92,7 @@
 </div>
 </section>
 
-<section id="v-cov" hidden>
+<section id="v-cov" role="tabpanel" aria-labelledby="t-cov" tabindex="0" hidden>
   <div class="panel" style="margin-top:16px">
     <h2>Lifecycle coverage of six reviewed approaches</h2>
     <p style="margin:0 0 10px;color:var(--muted)">Scores are the authors' qualitative reading of each source: 0 not addressed, 1 partial, 2 mechanism, 3 mechanism and evaluation. Hover or tap a cell.</p>
@@ -96,14 +102,14 @@
   <div class="panel" style="margin-top:16px"><h2>Mean coverage per stage</h2><svg id="stagechart" viewBox="0 0 560 190" width="100%" role="img" aria-label="Mean coverage per lifecycle stage"></svg></div>
 </section>
 
-<section id="v-thr" hidden>
+<section id="v-thr" role="tabpanel" aria-labelledby="t-thr" tabindex="0" hidden>
   <div class="panel" style="margin-top:16px"><h2>Threat and defence</h2>
     <div class="tw"><table><thead><tr><th>Threat</th><th>How it works</th><th>Impact on CPS</th><th>Defence</th></tr></thead><tbody id="thr"></tbody></table></div>
   </div>
   <div class="panel" style="margin-top:16px"><h2>Physical consequence by threat (0-3)</h2><div class="tw"><div class="heat" id="cons"></div></div></div>
 </section>
 
-<section id="v-gap" hidden>
+<section id="v-gap" role="tabpanel" aria-labelledby="t-gap" tabindex="0" hidden>
   <div class="two" style="margin-top:16px">
     <div class="panel"><h2>Research gaps</h2><div id="gaps"></div><p class="mono" style="color:var(--muted)">Severity is a qualitative rating (0-3).</p></div>
     <div class="panel"><h2>Persona requirements</h2><div id="pers"></div></div>

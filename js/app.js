@@ -4,12 +4,26 @@ import { normaliseWeights, urgency, band, chosenAction, curve, mean, stageMeans 
 const $ = (s) => document.querySelector(s);
 const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e; };
 
-/* ---------- tabs ---------- */
+/* ---------- tabs (WAI-ARIA tabs pattern: click, arrow keys, Home/End) ---------- */
 const tabs = [...document.querySelectorAll("nav button")];
-tabs.forEach((b) => (b.onclick = () => {
-  tabs.forEach((x) => x.setAttribute("aria-selected", x === b));
-  ["sim", "cov", "thr", "gap"].forEach((v) => ($("#v-" + v).hidden = v !== b.dataset.v));
-}));
+function selectTab(b, focus) {
+  tabs.forEach((x) => {
+    const on = x === b;
+    x.setAttribute("aria-selected", on);
+    x.tabIndex = on ? 0 : -1;
+    $("#v-" + x.dataset.v).hidden = !on;
+  });
+  if (focus) b.focus();
+}
+tabs.forEach((b, i) => {
+  b.onclick = () => selectTab(b, false);
+  b.onkeydown = (e) => {
+    const k = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+    if (k === undefined) return;
+    e.preventDefault();
+    selectTab(tabs[(k + tabs.length) % tabs.length], true);
+  };
+});
 
 /* ---------- simulator state ---------- */
 let sc = SC[2], persona = "op", stage = -1, choice = null, auto = false, timer = null;
